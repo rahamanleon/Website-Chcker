@@ -17,14 +17,25 @@ document.getElementById('downloadButton').addEventListener('click', function() {
 });
 
 function checkWebsite(url) {
-    fetch(url)
-        .then(response => {
-            const status = response.ok ? 'Website is reachable' : 'Website is not reachable';
-            document.getElementById('result').innerText = `${status}\nStatus Code: ${response.status}`;
-        })
-        .catch(() => {
-            document.getElementById('result').innerText = 'Error checking website';
-        });
+    Promise.all([
+        fetch(url),
+        fetch(url + '/styles.css'),
+        fetch(url + '/script.js')
+    ]).then(responses => {
+        const status = responses.map(response => ({
+            url: response.url,
+            status: response.ok ? 'reachable' : 'not reachable',
+            statusCode: response.status
+        }));
+        displayResults(status);
+    }).catch(error => {
+        document.getElementById('result').innerText = 'Error checking website';
+    });
+}
+
+function displayResults(results) {
+    let resultText = results.map(result => `${result.url} is ${result.status} (Status Code: ${result.statusCode})`).join('\n');
+    document.getElementById('result').innerText = resultText;
 }
 
 function downloadFile(filename, content) {
