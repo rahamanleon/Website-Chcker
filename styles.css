@@ -4,6 +4,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     height: 100vh;
     margin: 0;
 }
@@ -14,19 +15,22 @@ body {
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 300px;
+    width: 80%;
+    max-width: 800px;
 }
 
 h1 {
     color: #4CAF50; /* Green */
 }
 
-input {
+textarea {
     width: 100%;
+    height: 100px;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
+    font-family: monospace;
 }
 
 button {
@@ -44,9 +48,10 @@ button:hover {
     background-color: #45a049;
 }
 
-#result {
+iframe {
+    width: 100%;
+    height: 300px;
     margin-top: 20px;
-    color: #333;
-    text-align: left;
-    white-space: pre-wrap;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
