@@ -9,10 +9,12 @@
 <body>
     <div class="container">
         <h1>Website Checker</h1>
-        <input type="text" id="urlInput" placeholder="Enter URL">
+        <textarea id="htmlCode" placeholder="Enter HTML code here"></textarea>
+        <textarea id="cssCode" placeholder="Enter CSS code here"></textarea>
+        <textarea id="jsCode" placeholder="Enter JavaScript code here"></textarea>
         <button id="runButton">Run</button>
         <button id="downloadButton">Download</button>
-        <div id="result"></div>
+        <iframe id="output" sandbox="allow-scripts"></iframe>
     </div>
     <script src="script.js"></script>
 </body>
